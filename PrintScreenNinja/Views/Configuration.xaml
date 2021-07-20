@@ -1,0 +1,88 @@
+﻿<Window x:Class="PrintScreenNinja.Views.Configuration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:vm="clr-namespace:PrintScreenNinja.ViewModels"
+        mc:Ignorable="d"
+        x:Name="configuration"
+        Title="Configuration"
+        Width="400"
+        UseLayoutRounding="True"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="Height"
+        ResizeMode="NoResize">
+
+    <behaviors:Interaction.Triggers>
+        <behaviors:EventTrigger EventName="ContentRendered">
+            <behaviors:CallMethodAction
+                TargetObject="{Binding Mode=OneTime}"
+                MethodName="OnContentRendered"/>
+        </behaviors:EventTrigger>
+    </behaviors:Interaction.Triggers>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Views/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <vm:ConfigurationViewModel/>
+    </Window.DataContext>
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <HeaderedContentControl
+                Style="{StaticResource HeaderedContentControlStyle}"
+                Header="Save Directory: ">
+                <TextBox
+                    Height="22"
+                    VerticalContentAlignment="Center"
+                    Text="{Binding SaveDirectory.Value, Mode=TwoWay}"/>
+            </HeaderedContentControl>
+        </StackPanel>
+
+        <Border Grid.Row="1">
+            <StackPanel
+                Margin="0,5,0,0"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Button
+                    Width="80"
+                    Height="22"
+                    Content="OK">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="Click">
+                            <behaviors:CallMethodAction
+                                TargetObject="{Binding Mode=OneTime}"
+                                MethodName="OnOkeyClick"/>
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+                </Button>
+                <Button
+                    Width="80"
+                    Height="22"
+                    Margin="5,0,0,0"
+                    Content="Cancel"
+                    IsDefault="True">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="Click">
+                            <behaviors:CallMethodAction
+                                TargetObject="{Binding ElementName=configuration, Mode=OneTime}"
+                                MethodName="Close"/>
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

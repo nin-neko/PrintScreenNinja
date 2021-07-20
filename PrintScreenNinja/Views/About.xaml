@@ -1,0 +1,49 @@
+﻿<Window x:Class="PrintScreenNinja.Views.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="About"
+        UseLayoutRounding="True"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+
+    <Grid Margin="5">
+        <TextBlock>
+            PrintScreenNinja
+            <LineBreak/>
+            GitHub: <Hyperlink>
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:LaunchUriOrFileAction Path="https://github.com/nin-neko/PrintScreenNinja"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+                https://github.com/nin-neko/PrintScreenNinja
+            </Hyperlink>
+            <LineBreak/>
+            <LineBreak/>
+            This software uses the following libraries:
+            <LineBreak/>
+            <Hyperlink>
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:LaunchUriOrFileAction Path="https://github.com/runceel/ReactiveProperty"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+                ReactiveProperty (MIT)
+            </Hyperlink>
+            <LineBreak/>
+            <Hyperlink Cursor="Hand">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click">
+                        <behaviors:LaunchUriOrFileAction Path="https://github.com/hardcodet/wpf-notifyicon"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+                Hardcodet NotifyIcon for WPF (CPOL)
+            </Hyperlink>
+        </TextBlock>
+    </Grid>
+</Window>
