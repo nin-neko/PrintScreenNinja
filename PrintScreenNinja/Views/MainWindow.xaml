@@ -30,7 +30,7 @@
         </behaviors:EventTrigger>
     </behaviors:Interaction.Triggers>
 
-    <tb:TaskbarIcon>
+    <tb:TaskbarIcon IconSource="/favicon.ico">
         <tb:TaskbarIcon.ContextMenu>
             <ContextMenu>
                 <MenuItem Header="Configuration">
